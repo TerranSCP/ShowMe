@@ -1,8 +1,8 @@
 import React , {Component} from 'react';
 import './App.css';
-
+import history from '../History/History'
 import * as routes from '../Const/const'
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { Router, Route} from 'react-router-dom';
 import NavMenu from '../NavMenu/NavMenu';
 
 import HomePage from '../Pages/HomePage/HomePage';
@@ -18,11 +18,12 @@ import SignInPage from '../Pages/SignInPage/SignInPage';
 import SignUpPage from '../Pages/SignUpPage/SignUpPage';
 
 
+
 class App extends Component {
   render() {
     return (
      
-      <Router>
+      <Router history = {history}>
 
          <div className="App">
 
