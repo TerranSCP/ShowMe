@@ -3,6 +3,7 @@ import { withRouter , Link } from 'react-router-dom';
 import { auth } from '../../../Firebase';
 import { firebase } from '../../../Firebase';
 import {SignUpLink} from '../SignUpPage/SignUpPage';
+import {PasswordForgetLink} from '../PasswordForgetPage/PasswordForgetPage'
 import * as routes from '../../Const/const';
 import history from '../../History/History'
 
@@ -12,6 +13,7 @@ const SignInPage = () =>
     <div> Sign In Page
     <SignInForm />
     <SignUpLink/>
+    <PasswordForgetLink/>
     </div>
 
 
@@ -47,8 +49,7 @@ class SignInForm extends Component {
 
         event.preventDefault();
 
-       // const {history : {push} } = this.props;
-
+      
         auth.doSignInUser(email, password)
             .then(data => { 
 

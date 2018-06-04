@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import {auth} from './firebase';
+
 
 //create user in firebase
 export const doCreateUser = (email, password) =>
@@ -12,7 +12,7 @@ export const doSignInUser = (email, password) =>
 
 //sign out user
 export const doSignOutUser = () =>
-    firebase.auth().currentUser.signOut();
+    firebase.auth().signOut();
 
 
 //password reset
@@ -23,4 +23,8 @@ export const doPasswordReset = (email) =>
 export const doPasswordUpdate = (newPassword) =>
     firebase.auth().currentUser.updatePassword(newPassword);
 
+//auth state observer
+
+export const observeOnAuthStateChanged = (callback) =>
+    firebase.auth().onAuthStateChanged(callback);
 
