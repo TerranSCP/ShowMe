@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {observeOnAuthStateChanged} from '../../Firebase/auth'
 import UserContext from './UserContext'
-import routes from '../Const/const';
+import * as routes from '../Const/const';
 import history from '../History/History';
 
 

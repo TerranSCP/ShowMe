@@ -1,9 +1,10 @@
 import React from 'react';
 import Button from '../../Buttons/Button';
 import { doSignOutUser } from '../../../Firebase/auth';
-
 import UserContext from '../../UserAuthContext/UserContext';
-import {PassworResetLink} from '../PasswordResetPage/PasswordResetPage'
+import {PassworResetLink} from '../PasswordResetPage/PasswordResetPage';
+import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
+import {authCondition} from '../../UserAuthContext/authCondition';
 
 
 const AccountPage = () =>
@@ -26,5 +27,5 @@ const AccountPage = () =>
 
 </div>
 
-export default AccountPage;
+export default AuthorisationChecker(authCondition)(AccountPage);
 

@@ -1,7 +1,6 @@
 import React , {Component} from 'react';
 import { withRouter , Link } from 'react-router-dom';
 import { auth } from '../../../Firebase';
-import { firebase } from '../../../Firebase';
 import {SignInLink} from '../SignInPage/SignInPage'
 import * as routes from '../../Const/const';
 import history from '../../History/History'
@@ -77,6 +76,7 @@ class SignUpForm extends Component {
         const isNotValid = !email.match(/.{1,15}@.{1,10}/i) || (password !== confirmPassword) || password === '' || confirmPassword === '' || username === '';
 
         return (
+            
             <div>
 
                 <form onSubmit={this.onSubmit}>

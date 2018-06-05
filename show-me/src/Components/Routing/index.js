@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import * as routes from '../Const/const'
-import { Router, Route} from 'react-router-dom';
+import { Router, Route , Redirect } from 'react-router-dom';
 import history from '../History/History'
 
 import NavMenu from '../NavMenu/NavMenu';
@@ -17,31 +17,51 @@ import SignInPage from '../Pages/SignInPage/SignInPage';
 import SignUpPage from '../Pages/SignUpPage/SignUpPage';
 
 
-const Routing = () =>
 
-<Router history = {history}>
 
-    <div>
+class Routing extends Component {
 
-        <NavMenu/>
+ 
 
-        <Route exact path = {routes.HOME_PAGE} component = {()=><HomePage/>}></Route>
-        <Route exact path = {routes.LANDING_PAGE} component = {()=><LandingPage/>} ></Route>
-        <Route exact path = {routes.ACCOUNT_PAGE} component = {()=><AccountPage/>} ></Route>
+    render() {
 
-        <Route exact path = {routes.SIGN_IN_PAGE} component = {()=><SignInPage/>}></Route>
-        <Route exact path = {routes.SIGN_UP_PAGE} component = {()=><SignUpPage/>}></Route>
+       
 
-        <Route exact path = {routes.PASSWORD_FORGET_PAGE} component = {()=><PasswordForgetPage/>}></Route>
-        <Route exact path = {routes.PASSWORD_RESET_PAGE} component = {()=><PasswordResetPage/>}></Route>
+        return(
 
-        <Route exact path = {routes.EARTH_PAGE} component = {()=><EarthPage/>}></Route>
-        <Route exact path = {routes.MARS_PAGE} component = {()=><MarsPage/>}></Route>
-        <Route exact path = {routes.EPIC_PAGE} component = {()=><EpicPage/>}></Route>
-        <Route exact path = {routes.APOD_PAGE} component = {()=><ApodPage/>}></Route>
-    </div>
+     
 
- </Router>
+        <Router history={history}>
 
+            <div>
+
+                <NavMenu />
+
+
+                <Route exact path = {routes.HOME_PAGE} render ={ loggedUser => loggedUser ? <HomePage /> : <Redirect exact path = {routes.SIGN_IN_PAGE}/>}></Route>
+                <Route exact path={routes.LANDING_PAGE} component={() => <LandingPage />} ></Route>
+                <Route exact path={routes.ACCOUNT_PAGE} component={() => <AccountPage />} ></Route>
+
+                <Route exact path={routes.SIGN_IN_PAGE} component={() => <SignInPage />}></Route>
+                <Route exact path={routes.SIGN_UP_PAGE} component={() => <SignUpPage />}></Route>
+
+                <Route exact path={routes.PASSWORD_FORGET_PAGE} component={() => <PasswordForgetPage />}></Route>
+                <Route exact path={routes.PASSWORD_RESET_PAGE} component={() => <PasswordResetPage />}></Route>
+
+                <Route exact path={routes.EARTH_PAGE} component={() => <EarthPage />}></Route>
+                <Route exact path={routes.MARS_PAGE} component={() => <MarsPage />}></Route>
+                <Route exact path={routes.EPIC_PAGE} component={() => <EpicPage />}></Route>
+                <Route exact path={routes.APOD_PAGE} component={() => <ApodPage />}></Route>
+
+
+            </div>
+
+        </Router>
+
+       
+
+        );
+    }
+}
 
 export default Routing;

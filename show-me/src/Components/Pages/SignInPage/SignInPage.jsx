@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter , Link } from 'react-router-dom';
 import { auth } from '../../../Firebase';
-import { firebase } from '../../../Firebase';
 import {SignUpLink} from '../SignUpPage/SignUpPage';
 import {PasswordForgetLink} from '../PasswordForgetPage/PasswordForgetPage'
 import * as routes from '../../Const/const';
