@@ -20,7 +20,7 @@ const NavMenuIsLogged = () =>
         <li><Link to={routes.ACCOUNT_PAGE}>ACCOUNT</Link></li>
         <li><Link to={routes.MARS_PAGE}>MARS</Link></li>
         <li><Link to={routes.EPIC_PAGE}>EPIC</Link></li>
-        <li><Link to={routes.EARTH_PAGE}>EARTH</Link></li>
+        <li><Link to={routes.NASA_IMAGE_LIBRARY}>Nasa Image Library</Link></li>
         <li><Link to={routes.APOD_PAGE}>APOD</Link></li>
 
     </ul>

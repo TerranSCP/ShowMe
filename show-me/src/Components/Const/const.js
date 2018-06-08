@@ -7,7 +7,7 @@ export const PASSWORD_FORGET_PAGE = '/password-forget';
 export const PASSWORD_RESET_PAGE = '/password-reset';
 
 export const MARS_PAGE = '/mars';
-export const EARTH_PAGE = '/earth';
+export const NASA_IMAGE_LIBRARY = '/image-library';
 export const EPIC_PAGE = '/epic';
 export const APOD_PAGE = '/apod';
 

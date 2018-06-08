@@ -37,7 +37,7 @@ class PasswordForgetForm extends Component {
     onSubmit = (event) => {
 
         const {
-            email,
+            email
         } = this.state;
 
         event.preventDefault();

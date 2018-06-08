@@ -7,7 +7,7 @@ import NavMenu from '../NavMenu/NavMenu';
 import HomePage from '../Pages/HomePage/HomePage';
 import AccountPage from '../Pages/AccountPage/AccountPage';
 import ApodPage from '../Pages/ApodPage/ApodPage';
-import EarthPage from '../Pages/EarthPage/EarthPage';
+import NasaImageLibrary from '../Pages/ImageLibrary/NasaImageLibrary';
 import EpicPage from '../Pages/EpicPage/EpicPage';
 import LandingPage from '../Pages/LandingPage/LandingPage';
 import MarsPage from '../Pages/MarsPage/MarsPage';
@@ -48,7 +48,7 @@ class Routing extends Component {
                 <Route exact path={routes.PASSWORD_FORGET_PAGE} component={() => <PasswordForgetPage />}></Route>
                 <Route exact path={routes.PASSWORD_RESET_PAGE} component={() => <PasswordResetPage />}></Route>
 
-                <Route exact path={routes.EARTH_PAGE} component={() => <EarthPage />}></Route>
+                <Route exact path={routes.NASA_IMAGE_LIBRARY} component={() => <NasaImageLibrary />}></Route>
                 <Route exact path={routes.MARS_PAGE} component={() => <MarsPage />}></Route>
                 <Route exact path={routes.EPIC_PAGE} component={() => <EpicPage />}></Route>
                 <Route exact path={routes.APOD_PAGE} component={() => <ApodPage />}></Route>
