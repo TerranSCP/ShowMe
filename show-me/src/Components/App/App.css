@@ -49,3 +49,15 @@ body{
   color:rgb(1, 22, 19);
   font-size: 1.4rem;
 }
+
+.button{
+  width:80px;
+  height:30px;
+  background-color:rgb(156, 187, 185);
+  border:1px solid rgb(36, 182, 162);
+}
+
+.button:hover{
+  border:1px solid rgb(255, 0, 55);
+  background:linear-gradient(rgb(156, 187, 185),rgb(94, 160, 156));
+}

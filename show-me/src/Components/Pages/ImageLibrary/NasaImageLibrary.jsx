@@ -3,7 +3,7 @@ import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import { authCondition } from '../../UserAuthContext/authCondition';
 import { apiKey, domainUrl, EARTH_LINK_PARTS } from '../../Const/urlParts'
 import axios from 'axios';
-
+import Button from '../../Buttons/Button'
 import ImageTable from './ImageTable';
 
 
@@ -34,11 +34,10 @@ class ImageLibrary extends Component {
         super(props);
 
         this.state = {
-            searchTerm: '',
-            resp: null
+            searchTerm: 'mars',
+            resp: null,
+            page: 0
         };
-
-
 
 
     }
@@ -47,49 +46,72 @@ class ImageLibrary extends Component {
 
     fetchData = (searchTerm) => {
 
-       
+        const { page } = this.state
 
-        axios.get(`https://images-api.nasa.gov/search?q=${searchTerm}&media_type=image`)
+        axios.get(`https://images-api.nasa.gov/search?q=${searchTerm}&media_type=image&page=${page}`)
             .then(result => this.setSearch(result.data.collection.items))
             .catch(error => error)
 
     }
 
 
-
     setSearch = (resp) => {
 
-       
-          this.setState({ resp });
-        
+        this.setState({ resp });
+
+    }
 
 
+   nextPage = (searchTerm,event) => {
+        const { page } = this.state;
+        this.setState({ page: page + 1 })
+        setTimeout(() => {
+            this.fetchData(searchTerm, page)
+        }, 500)
+    }
+
+    prevPage = (searchTerm) => {
+        const { page } = this.state;
+        this.setState({ page: page - 1 })
+        setTimeout(() => {
+            this.fetchData(searchTerm, page)
+        }, 500)
     }
 
     render() {
 
-        const { searchTerm, resp } = this.state;
+        const { searchTerm, resp, page } = this.state;
 
-       
+        const isInvalid = searchTerm === '' || page < 1;
+     
+
+
+
 
         return (
 
 
-            <div className='Earth-form__wrapper'  >
+            <div className='Library__wrapper'  >
 
 
 
 
-                <form style = {{marginBottom:'100px'}} >
+                <form style={{ marginBottom: '100px' }} >
 
 
-                <input  type='text' value={searchTerm} onChange={event => this.setState(VIA_PROPS('searchTerm', event.target.value))} />
-                <button type = 'button'  onClick = {()=> this.fetchData(searchTerm)}>SEARCH</button>
-                  
+                    <input type='text' value={searchTerm} onChange={event => this.setState(VIA_PROPS('searchTerm', event.target.value))} />
+                    <button className='button  button__search' type='button' onClick={() => {this.setState({page:1}) ; setTimeout( () =>{ this.fetchData(searchTerm, page)},500)}}>SEARCH</button>
+
 
                 </form>
 
-              {  resp ? <ImageTable resp = {resp} style = {{width :'80%'}} /> : null   }
+                <Button text='prev' type='button' className='button  button__prev' disabled={isInvalid} onClick={() => this.prevPage(searchTerm)} />
+                <Button text='next' type='button' className='button  button__next' disabled={isInvalid} onClick={() => this.nextPage(searchTerm)} />
+
+                {resp ? <ImageTable resp={resp} style={{ width: '80%' }} /> : null}
+
+
+
 
 
             </div>
