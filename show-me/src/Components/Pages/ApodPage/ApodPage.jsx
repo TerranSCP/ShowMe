@@ -15,10 +15,6 @@ const VIA_PROPS = (propname, value) => {
 }
 
 
-
-
-
-
 class ApodForm extends Component {
 
     constructor(props) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {Component} from 'react';
 import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import {authCondition} from '../../UserAuthContext/authCondition';
 

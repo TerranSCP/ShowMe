@@ -13,12 +13,6 @@ const NasaImageLibrary = () =>
    <ImageLibrary />
     </div>
 
-const MAX_DATE = `${new Date().getFullYear()}-\
-${new Date().getMonth() + 1 < 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1}-\
-${new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate()}`
-
-
-
 
 const VIA_PROPS = (propname, value) => {
     return { [propname]: value }
@@ -34,7 +28,7 @@ class ImageLibrary extends Component {
         super(props);
 
         this.state = {
-            searchTerm: 'mars',
+            searchTerm: 'orion',
             resp: null,
             page: 0
         };
@@ -78,6 +72,12 @@ class ImageLibrary extends Component {
         }, 500)
     }
 
+    remove = (id) =>{
+           
+             const newResp = this.state.resp.filter(elem => elem.data[0].nasa_id != id  );
+            this.setSearch(newResp);
+    }
+
     render() {
 
         const { searchTerm, resp, page } = this.state;
@@ -108,7 +108,7 @@ class ImageLibrary extends Component {
                 <Button text='prev' type='button' className='button  button__prev' disabled={isInvalid} onClick={() => this.prevPage(searchTerm)} />
                 <Button text='next' type='button' className='button  button__next' disabled={isInvalid} onClick={() => this.nextPage(searchTerm)} />
 
-                {resp ? <ImageTable resp={resp} style={{ width: '80%' }} /> : null}
+                {resp ? <ImageTable resp={resp} remove={this.remove} style={{ width: '80%' }} /> : null}
 
 
 
