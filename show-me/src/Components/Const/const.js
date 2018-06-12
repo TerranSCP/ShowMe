@@ -8,6 +8,6 @@ export const PASSWORD_RESET_PAGE = '/password-reset';
 
 export const MARS_PAGE = '/mars';
 export const NASA_IMAGE_LIBRARY = '/image-library';
-export const EPIC_PAGE = '/epic';
+export const SPACEX_PAGE = '/space-x';
 export const APOD_PAGE = '/apod';
 

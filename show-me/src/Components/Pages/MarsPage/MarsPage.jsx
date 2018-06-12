@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import { authCondition } from '../../UserAuthContext/authCondition';
-import { apiKey} from '../../Const/urlParts'
+import { apiKey } from '../../Const/urlParts'
 import axios from 'axios';
 import Button from '../../Buttons/Button'
 import MarsTable from './MarsTable';
@@ -15,7 +15,9 @@ const MarsPhotosLibrary = () =>
 
 
 const VIA_PROPS = (propname, value) => {
+    
     return { [propname]: value }
+
 
 }
 
@@ -30,13 +32,13 @@ class MarsLibrary extends Component {
         this.state = {
             resp: null,
             page: 0,
-            searchTerm:''
+            searchTerm: '',
         };
 
 
     }
 
-   
+
 
     fetchData = (searchTerm) => {
 
@@ -56,7 +58,7 @@ class MarsLibrary extends Component {
     }
 
 
-   nextPage = (searchTerm,event) => {
+    nextPage = (searchTerm, event) => {
         const { page } = this.state;
         this.setState({ page: page + 1 })
         setTimeout(() => {
@@ -72,20 +74,18 @@ class MarsLibrary extends Component {
         }, 500)
     }
 
-    remove = (id) =>{
-           
-            const newResp = this.state.resp.filter(elem => elem.id !== id  );
-            this.setSearch(newResp);
+    remove = (id) => {
+
+        const newResp = this.state.resp.filter(elem => elem.id !== id);
+        this.setSearch(newResp);
     }
 
     render() {
 
-        const { resp, page, searchTerm } = this.state;
+        const { resp, page, searchTerm, checks } = this.state;
 
-        const isInvalid =  page <= 1;
-     
-
-
+        const isInvalid = page <= 1;
+        const currentCam = `Current CAM : ${searchTerm}`
 
 
         return (
@@ -95,24 +95,28 @@ class MarsLibrary extends Component {
 
 
 
+                <div className='Mars--form__wrapper'>
 
-                <form style={{ marginBottom: '100px' }} >
-
-
-                   
-               <label> FRONTAL CAMERA<input  type = 'checkbox' value = 'fhaz' onChange = {event => this.setState(VIA_PROPS('searchTerm',event.target.value))}/> </label>
-               <label> REAR CAMERA<input  type = 'checkbox' value = 'rhaz' onChange = {event => this.setState(VIA_PROPS('searchTerm',event.target.value))}/> </label>
-               <label> MAST CAMERA<input  type = 'checkbox' value = 'mast' onChange = {event => this.setState(VIA_PROPS('searchTerm',event.target.value))}/> </label>
-               <label> PANORAMIC CAMERA<input  type = 'checkbox' value = 'pancam' onChange = {event => this.setState(VIA_PROPS('searchTerm',event.target.value))}/> </label>
-               
-                    <button className='button  button__search' type='button' onClick={() => {this.setState({page:1}) ; setTimeout( () =>{ this.fetchData(searchTerm, page)},500)}}>SEARCH</button>
+                    <form style={{ marginBottom: '100px' }} >
 
 
-                </form>
+
+                        <label> FRONTAL CAMERA   <input type='checkbox' value='fhaz' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
+                        <label> REAR CAMERA  <input type='checkbox' value='rhaz' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
+                        <label> MAST CAMERA  <input type='checkbox' value='mast' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
+                        <label> PANORAMIC CAMERA <input type='checkbox' value='pancam' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
+
+                        <button className='button  button__search' type='button' onClick={() => { this.setState({ page: 1 }); setTimeout(() => { this.fetchData(searchTerm, page) }, 500) }}>SEARCH</button>
+
+
+                    </form>
+                </div>
+
 
                 <Button text='prev' type='button' className='button  button__prev' disabled={isInvalid} onClick={() => this.prevPage(searchTerm)} />
-                <Button text='next' type='button' className='button  button__next'  onClick={() => this.nextPage(searchTerm)} />
+                <Button text='next' type='button' className='button  button__next' onClick={() => this.nextPage(searchTerm)} />
 
+                {currentCam ? currentCam : null}
                 {resp ? <MarsTable resp={resp} remove={this.remove} style={{ width: '80%' }} /> : null}
 
 

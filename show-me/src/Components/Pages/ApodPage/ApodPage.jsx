@@ -14,6 +14,8 @@ const VIA_PROPS = (propname, value) => {
 
 }
 
+const MIN_DATE = `1996-01-01`;
+
 
 class ApodForm extends Component {
 
@@ -35,7 +37,7 @@ class ApodForm extends Component {
 
         const { date } = this.state
         
-        if(!dateChecker(date,MAX_DATE)){
+        if(!dateChecker(date,MAX_DATE,MIN_DATE)){
             return
         }
 
@@ -72,7 +74,7 @@ class ApodForm extends Component {
                 <form style={{ marginBottom: '100px' }} >
 
 
-                    <input max={MAX_DATE} type='date' value={date} onChange={event => this.setState(VIA_PROPS('date', event.target.value))} />
+                    <input min={MIN_DATE} max={MAX_DATE} type='date' value={date} onChange={event => this.setState(VIA_PROPS('date', event.target.value))} />
                     <button className='button  button__search' type='button' onClick={() =>  this.fetchData(date) }>SEARCH</button>
 
 

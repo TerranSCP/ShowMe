@@ -5,6 +5,7 @@ import UserContext from '../UserAuthContext/UserContext'
 
 
 const NavMenu = ({ loggedUser }) =>
+
     <UserContext.Consumer>
         {
         loggedUser => loggedUser
@@ -19,7 +20,7 @@ const NavMenuIsLogged = () =>
         <li><Link to={routes.HOME_PAGE}>HOME</Link></li>
         <li><Link to={routes.ACCOUNT_PAGE}>ACCOUNT</Link></li>
         <li><Link to={routes.MARS_PAGE}>MARS</Link></li>
-        <li><Link to={routes.EPIC_PAGE}>EPIC</Link></li>
+        <li><Link to={routes.SPACEX_PAGE}>SpaceX Launches</Link></li>
         <li><Link to={routes.NASA_IMAGE_LIBRARY}>Nasa Image Library</Link></li>
         <li><Link to={routes.APOD_PAGE}>APOD</Link></li>
 

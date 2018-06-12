@@ -7,31 +7,23 @@ ${new Date().getMonth() + 1 < 10 ? '0' + (new Date().getMonth() + 1) : new Date(
 ${new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate()}`
 
 
-export const dateChecker = (date,max) => {
+export const dateChecker = (date,max,min) => {
 
 
     date = date.split('-');
-    max = MAX_DATE.split('-');
+    max = max.split('-');
+    min = min.split('-');
 
-    if(date[0]>max[0] || date[1]> max[1] || date[2]>max[2]){
-        alert('Date cannot contain a future time')
+    if(date[0]>max[0] || date[1]> max[1] || min[0]>date[0] || date[2]>max[2]){
+        alert('Min date 01.01.1996 ,max date is today!')
         return false
     }
-
     return true
 
 
 }
 
-export const EARTH_LINK_PARTS = {
-    BASE: 'https://api.nasa.gov/planetary/earth/imagery',
-    LON:'lon=',
-    LAT:'&lat=',
-    DATE:'&date=',
-    CLOUD_SCORE:'&cloud_score=',
-    API_KEY:'&api_key='
-       
-}
+
 
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../Buttons/Button';
+
 
 
 const ImageTable = ({ resp,remove }) => {
@@ -13,7 +13,7 @@ const ImageTable = ({ resp,remove }) => {
 
         resp.map(item => {
           return (
-            <div key={`response--block__${counter++}`} style={{ width: '25%', height: 'auto', display: 'flex', marginBottom: '15px', marginLeft: '15px', flexDirection: 'column', border: '2px solid #000' }}>
+            <div key={`response--block__${counter++}`} style={{ width: '25%',  display: 'flex', marginBottom: '15px', marginLeft: '15px', flexDirection: 'column', border: '2px solid #000' }}>
                 <button className='remove__button' onClick = {()=>remove(item.data[0].nasa_id)}>Del</button>
               <h2>{item.data[0].center}</h2>
               <img style={{ width: '100%', height: '300px' }} alt='image' key={item.data[0].nasa_id} src={item.links[0].href} />
