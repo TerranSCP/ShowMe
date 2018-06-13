@@ -2,9 +2,10 @@ import React , {Component} from 'react';
 import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import {authCondition} from '../../UserAuthContext/authCondition';
 import SpaceXTable from './SpaceXTable'
-import Button from '../../Buttons/Button';
+import Button from '../../Buttons';
 import axios from 'axios';
 import ByYears from '../../Filters/ByYears'
+import Loader from '../../Loader'
 
 
 const SpaceXPage = () =>
@@ -24,6 +25,7 @@ class SpaceXLaunches extends Component {
         this.state = {
          
             resp: null,
+            loading:false
             
         };
 
@@ -34,7 +36,8 @@ class SpaceXLaunches extends Component {
 
     fetchData = () => {
 
-        const { page } = this.state
+      
+        this.setState({loading:true})
 
         axios.get(`https://api.spacexdata.com/v2/launches`)
             .then(result => this.setSearch(result.data))
@@ -45,7 +48,7 @@ class SpaceXLaunches extends Component {
 
     setSearch = (resp) => {
 
-        this.setState({ resp });
+        this.setState({ resp , loading:false });
 
     }
 
@@ -56,8 +59,8 @@ class SpaceXLaunches extends Component {
 
     render() {
 
-        const {  resp } = this.state;
-       const isInvalid = resp === null;
+        const {  resp , loading } = this.state;
+         const isInvalid = resp === null;
 
       
      
@@ -82,6 +85,7 @@ class SpaceXLaunches extends Component {
 
                <Button text = 'Sort By Years' disabled={isInvalid} onClick ={()=> this.setState(ByYears({resp}))}/>
 
+               {loading? <Loader/> : null}
                {resp ? <SpaceXTable resp={resp}  style={{ width: '80%' }} /> : null}
 
 

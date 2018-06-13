@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import * as routes from '../Const/const'
-import { Router, Route , Redirect } from 'react-router-dom';
-import history from '../History/History'
+import { Router, Route } from 'react-router-dom';
+import history from '../History'
 
-import NavMenu from '../NavMenu/NavMenu';
-import HomePage from '../Pages/HomePage/HomePage';
-import AccountPage from '../Pages/AccountPage/AccountPage';
-import ApodPage from '../Pages/ApodPage/ApodPage';
+import NavMenu from '../NavMenu';
+import HomePage from '../Pages/HomePage';
+import AccountPage from '../Pages/AccountPage';
+import ApodPage from '../Pages/ApodPage';
 import NasaImageLibrary from '../Pages/ImageLibrary/NasaImageLibrary';
 import SpaceXPage from '../Pages/SPACEX/SpaceXPage';
-import LandingPage from '../Pages/LandingPage/LandingPage';
+import LandingPage from '../Pages/LandingPage';
 import MarsPage from '../Pages/MarsPage/MarsPage';
-import PasswordForgetPage from '../Pages/PasswordForgetPage/PasswordForgetPage';
-import PasswordResetPage from '../Pages/PasswordResetPage/PasswordResetPage';
-import SignInPage from '../Pages/SignInPage/SignInPage';
-import SignUpPage from '../Pages/SignUpPage/SignUpPage';
+import PasswordForgetPage from '../Pages/PasswordForgetPage';
+import PasswordResetPage from '../Pages/PasswordResetPage';
+import SignInPage from '../Pages/SignInPage';
+import SignUpPage from '../Pages/SignUpPage';
 
 
 
@@ -38,7 +38,7 @@ class Routing extends Component {
                 <NavMenu />
 
 
-                <Route exact path = {routes.HOME_PAGE} render ={ loggedUser => loggedUser ? <HomePage /> : <Redirect exact path = {routes.SIGN_IN_PAGE}/>}></Route>
+                <Route exact path = {routes.HOME_PAGE}  component ={ () => <HomePage /> }></Route>
                 <Route exact path={routes.LANDING_PAGE} component={() => <LandingPage />} ></Route>
                 <Route exact path={routes.ACCOUNT_PAGE} component={() => <AccountPage />} ></Route>
 

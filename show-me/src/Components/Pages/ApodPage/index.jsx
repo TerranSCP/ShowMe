@@ -3,6 +3,7 @@ import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import {authCondition} from '../../UserAuthContext/authCondition';
 import {apiKey,MAX_DATE,dateChecker} from '../../Const/urlParts'
 import axios from 'axios';
+import Loader from '../../Loader'
 
 
 const ApodPage = () =>
@@ -25,7 +26,8 @@ class ApodForm extends Component {
 
         this.state = {       
             resp: null,
-            date: ''
+            date: '',
+            loading:false
         };
 
 
@@ -41,7 +43,8 @@ class ApodForm extends Component {
             return
         }
 
-
+        this.setState({loading:true})
+        
         axios.get(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=${apiKey}`)
             .then(result => this.setSearch(result.data))
             .catch(error => error)
@@ -51,7 +54,7 @@ class ApodForm extends Component {
 
     setSearch = (resp) => {
 
-        this.setState({ resp });
+        this.setState({ resp , loading:false });
 
     }
 
@@ -59,7 +62,7 @@ class ApodForm extends Component {
 
     render() {
 
-        const { date, resp } = this.state;
+        const { date, resp ,loading} = this.state;
 
     
 
@@ -80,10 +83,13 @@ class ApodForm extends Component {
 
                 </form>
 
+            {loading? <Loader/> : null}
+
               {resp ? 
+
                 <div className = 'Apod--picture__wrapper' style = {{display:'flex',flexDirection:'column',alignItems:'center',border:'1px solid black',width:'720px'}}>
                     <span>{resp.title}</span>
-                    <img style = {{width:'700px',height:'500px'}} src = {resp.url}/>
+                    <img style = {{width:'700px',height:'500px'}} alt='p' src = {resp.url}/>
                     <div>{resp.explanation}</div>
                     <span>{resp.copyright}</span>
                 </div>

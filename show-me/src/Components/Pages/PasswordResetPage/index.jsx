@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as routes from '../../Const/const';
 import { Link } from 'react-router-dom';
 import { doPasswordUpdate } from '../../../Firebase/auth';
-import history from '../../History/History';
+import history from '../../History';
 import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import {authCondition} from '../../UserAuthContext/authCondition';
 

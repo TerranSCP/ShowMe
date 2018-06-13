@@ -21,7 +21,7 @@ const SpaceXTable = ({ resp }) => {
                 <span>{`Launch success : ${item.launch_success}`}</span>
                 <span>{item.details}</span>
                     
-                <img alt = 'mission_image' style={{ width: '100%', height: '300px' }} alt='image' key={item.flight_number} src={item.links.mission_patch} />
+                <img  style={{ width: '100%', height: '300px' }} alt='mission patch been here' key={item.flight_number} src={item.links.mission_patch} />
                 <span style={{ width: '100%' }}><a href = {item.links.video_link}>YOUTUBE</a></span>
                 <span ><a href = {item.links.wikipedia}>Wiki Link</a></span>
               </div>

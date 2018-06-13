@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as routes from '../../Const/const';
 import { Link } from 'react-router-dom';
 import { doPasswordReset } from '../../../Firebase/auth';
-import history from '../../History/History'
+import history from '../../History'
 
 
 const PasswordForgetPage = () =>

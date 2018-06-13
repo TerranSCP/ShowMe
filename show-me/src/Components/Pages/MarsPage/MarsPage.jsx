@@ -3,8 +3,9 @@ import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import { authCondition } from '../../UserAuthContext/authCondition';
 import { apiKey } from '../../Const/urlParts'
 import axios from 'axios';
-import Button from '../../Buttons/Button'
+import Button from '../../Buttons'
 import MarsTable from './MarsTable';
+import Loader from '../../Loader';
 
 
 
@@ -33,6 +34,7 @@ class MarsLibrary extends Component {
             resp: null,
             page: 0,
             searchTerm: '',
+            loading:false
         };
 
 
@@ -44,6 +46,8 @@ class MarsLibrary extends Component {
 
         const { page } = this.state
 
+        this.setState({loading:true})
+
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=${page}&camera=${searchTerm}&api_key=${apiKey}`)
             .then(result => this.setSearch(result.data.photos))
             .catch(error => error)
@@ -53,7 +57,7 @@ class MarsLibrary extends Component {
 
     setSearch = (resp) => {
 
-        this.setState({ resp });
+        this.setState({ resp , loading:false });
 
     }
 
@@ -82,7 +86,7 @@ class MarsLibrary extends Component {
 
     render() {
 
-        const { resp, page, searchTerm, checks } = this.state;
+        const { resp, page, searchTerm, loading } = this.state;
 
         const isInvalid = page <= 1;
         const currentCam = `Current CAM : ${searchTerm}`
@@ -116,6 +120,7 @@ class MarsLibrary extends Component {
                 <Button text='prev' type='button' className='button  button__prev' disabled={isInvalid} onClick={() => this.prevPage(searchTerm)} />
                 <Button text='next' type='button' className='button  button__next' onClick={() => this.nextPage(searchTerm)} />
 
+                {loading? <Loader/> : null}
                 {currentCam ? currentCam : null}
                 {resp ? <MarsTable resp={resp} remove={this.remove} style={{ width: '80%' }} /> : null}
 

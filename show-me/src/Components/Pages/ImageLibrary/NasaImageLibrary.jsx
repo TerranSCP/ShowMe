@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import { authCondition } from '../../UserAuthContext/authCondition';
-import { apiKey, domainUrl } from '../../Const/urlParts'
 import axios from 'axios';
-import Button from '../../Buttons/Button'
+import Button from '../../Buttons'
 import ImageTable from './ImageTable';
-import Loader from '../../Loader/Loader'
+import Loader from '../../Loader'
 
 
 
@@ -29,7 +28,7 @@ class ImageLibrary extends Component {
         super(props);
 
         this.state = {
-            searchTerm: 'nasa',
+            searchTerm: 'orion',
             resp: null,
             page: 0,
             loading:false
@@ -38,24 +37,16 @@ class ImageLibrary extends Component {
 
     }
 
-    componentDidMount = () =>{
-        const {searchTerm} = this.state
-        this.fetchData(searchTerm)
-    }
-
-
 
     fetchData = (searchTerm) => {
 
-        const { page,loading } = this.state
+        const { page } = this.state
 
         this.setState({loading:true})
 
         axios.get(`https://images-api.nasa.gov/search?q=${searchTerm}&media_type=image&page=${page}`)
             .then(result => this.setSearch(result.data.collection.items))
             .catch(error => error)
-
-        
 
     }
 
@@ -67,7 +58,7 @@ class ImageLibrary extends Component {
     }
 
 
-   nextPage = (searchTerm,event) => {
+   nextPage = (searchTerm) => {
         const { page } = this.state;
         this.setState({ page: page + 1 })
         setTimeout(() => {
@@ -130,7 +121,7 @@ class ImageLibrary extends Component {
 
             </div>
 
-        );
+        ) ;
     }
 
 

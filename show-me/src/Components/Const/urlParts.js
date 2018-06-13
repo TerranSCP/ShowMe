@@ -1,6 +1,6 @@
 
 export const apiKey = 'isarBhPxQUbJnLNhWvn3klmi7JC5EH5W7AmWZNy0' ;
-export const domainUrl = 'http://localhost:3000/';
+
 
 export const MAX_DATE = `${new Date().getFullYear()}-\
 ${new Date().getMonth() + 1 < 10 ? '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1}-\

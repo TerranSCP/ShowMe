@@ -1,26 +1,27 @@
-import React , {Component} from 'react';
-import { withRouter , Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import { auth } from '../../../Firebase';
-import {SignInLink} from '../SignInPage/SignInPage'
+import { SignInLink } from '../SignInPage'
 import * as routes from '../../Const/const';
-import history from '../../History/History'
+import history from '../../History';
+import { database } from '../../../Firebase';
 
 
 
 const SignUpPage = () =>
-<div> Sign Up 
- <SignUpForm/>
- <SignInLink/>
-</div>
+    <div> Sign Up
+ <SignUpForm />
+        <SignInLink />
+    </div>
 
 
 
 const STATES = {
 
-    username:'',
+    username: '',
     email: '',
     password: '',
-    confirmPassword:'',
+    confirmPassword: '',
     error: null
 }
 
@@ -46,7 +47,6 @@ class SignUpForm extends Component {
         const {
             email,
             password,
-            confirmPassword,
             username,
 
         } = this.state;
@@ -54,11 +54,23 @@ class SignUpForm extends Component {
         event.preventDefault();
 
         auth.doCreateUser(email, password)
-            .then(data => {
-                 this.setState({ ...STATES })
-                 history.push(routes.HOME_PAGE);
-                 })
-            .catch(error => error)
+            .then(
+                data => {
+
+                    history.push(routes.HOME_PAGE);
+
+                      database.createDbUser(data.user.uid, username, email)
+
+                            .then(() => {
+                                this.setState(() => ({ ...STATES }));   
+                                                                  
+                            })    
+                            .catch(error => this.setState(VIA_PROPS('error', error)))
+
+                          
+                })
+
+            .catch(error => this.setState(VIA_PROPS('error', error)))
     }
 
 
@@ -76,7 +88,7 @@ class SignUpForm extends Component {
         const isNotValid = !email.match(/.{1,15}@.{1,10}/i) || (password !== confirmPassword) || password === '' || confirmPassword === '' || username === '';
 
         return (
-            
+
             <div>
 
                 <form onSubmit={this.onSubmit}>
@@ -107,9 +119,9 @@ class SignUpForm extends Component {
 
 
 export const SignUpLink = () =>
-<div>
-    Dont have account? <br/>
-    <Link to={routes.SIGN_UP_PAGE}>Sign UP!</Link>
-</div>
+    <div>
+        Dont have account? <br />
+        <Link to={routes.SIGN_UP_PAGE}>Sign UP!</Link>
+    </div>
 
 export default withRouter(SignUpPage);

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter , Link } from 'react-router-dom';
 import { auth } from '../../../Firebase';
-import {SignUpLink} from '../SignUpPage/SignUpPage';
-import {PasswordForgetLink} from '../PasswordForgetPage/PasswordForgetPage'
+import {SignUpLink} from '../SignUpPage';
+import {PasswordForgetLink} from '../PasswordForgetPage'
 import * as routes from '../../Const/const';
-import history from '../../History/History'
+import history from '../../History'
 
 
 
