@@ -54,9 +54,6 @@ class SpaceXLaunches extends Component {
 
 
 
-
- 
-
     render() {
 
         const {  resp , loading } = this.state;
@@ -76,7 +73,7 @@ class SpaceXLaunches extends Component {
 
 
                    
-                    <button className='button  button__load' type='button' onClick={() => this.fetchData()}>LOAD</button>
+                    <Button className='button  button__load' type='button' onClick={() => this.fetchData()} text = 'Load'></Button>
 
 
                 </form>

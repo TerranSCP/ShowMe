@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../Const/const';
 import UserContext from '../UserAuthContext/UserContext'
+import {StyledUl,StyledLi,StyledLink} from '../../StyledComponents/index'
 
 
 const NavMenu = ({ loggedUser }) =>
@@ -16,22 +17,23 @@ const NavMenu = ({ loggedUser }) =>
 
 const NavMenuIsLogged = () =>
 
-    <ul className = 'Nav--Menu'>
-        <li><Link to={routes.HOME_PAGE}>HOME</Link></li>
-        <li><Link to={routes.ACCOUNT_PAGE}>ACCOUNT</Link></li>
-        <li><Link to={routes.MARS_PAGE}>MARS</Link></li>
-        <li><Link to={routes.SPACEX_PAGE}>SpaceX Launches</Link></li>
-        <li><Link to={routes.NASA_IMAGE_LIBRARY}>Nasa Image Library</Link></li>
-        <li><Link to={routes.APOD_PAGE}>APOD</Link></li>
+    <StyledUl className = 'Nav--Menu'>
+    
+        <StyledLi><Link className = 'Nav--menu__link' to={routes.HOME_PAGE}>HOME</Link></StyledLi>
+        <StyledLi><Link className = 'Nav--menu__link' to={routes.ACCOUNT_PAGE}>ACCOUNT</Link></StyledLi>
+        <StyledLi><Link className = 'Nav--menu__link' to={routes.MARS_PAGE}>MARS</Link></StyledLi>
+        <StyledLi><Link className = 'Nav--menu__link' to={routes.SPACEX_PAGE}>SpaceX Launches</Link></StyledLi>
+        <StyledLi><Link className = 'Nav--menu__link' to={routes.NASA_IMAGE_LIBRARY}>Nasa Image Library</Link></StyledLi>
+        <StyledLi><Link className = 'Nav--menu__link' to={routes.APOD_PAGE}>APOD</Link></StyledLi>
 
-    </ul>
+    </StyledUl>
 
 
 
 const NavMenuIsNotLogged = () =>
-    <ul className = 'Nav--Menu'>
-        <li><Link to={routes.LANDING_PAGE}>LANDING</Link></li>
-        <li><Link to={routes.SIGN_IN_PAGE}>SIGN IN</Link></li>
-    </ul>
+    <StyledUl className = 'Nav--Menu'>
+        <StyledLi><Link className = 'Nav--menu__link' to={routes.LANDING_PAGE}>LANDING</Link></StyledLi>
+        <StyledLi><Link className = 'Nav--menu__link' to={routes.SIGN_IN_PAGE}>SIGN IN</Link></StyledLi>
+    </StyledUl>
 
 export default NavMenu;

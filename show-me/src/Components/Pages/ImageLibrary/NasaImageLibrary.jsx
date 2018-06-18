@@ -102,7 +102,7 @@ class ImageLibrary extends Component {
 
 
                     <input type='text' value={searchTerm} onChange={event => this.setState(VIA_PROPS('searchTerm', event.target.value))} />
-                    <button className='button  button__search' type='button' onClick={() => {this.setState({page:1}) ; setTimeout( () =>{ this.fetchData(searchTerm, page)},500)}}>SEARCH</button>
+                    <Button className='button  button__search' type='button' text = 'Search' onClick={() => {this.setState({page:1}) ; setTimeout( () =>{ this.fetchData(searchTerm, page)},500)}}></Button>
 
 
                 </form>

@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
-import './App.css';
+
 import AuthentificationChecker from '../UserAuthContext/AuthentificationChecker'
-import Routing from '../Routing'
+import Routing from '../Routing';
+import {StyledHeader,StyledText} from '../../StyledComponents/index';
+import  {injectGlobal} from 'styled-components'
 
 
 
+injectGlobal`
+    body{
+        margin:0;
+        padding: 0;
+        background-color: lightgray;
+        
+    }
+    .Nav--menu__link{
+      text-decoration: none;
+      color:rgb(1, 22, 19);
+      font-size: 1.4rem;
+    }
+`
 
 
 class App extends Component {
@@ -13,7 +28,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Welcome to "ShowMe"</h1>
+        <StyledHeader>Welcome to ShowMe app.</StyledHeader>
+        <StyledText>Know more about space programs and investigate amazing things!</StyledText>
         <Routing />
       </div>
     );

@@ -3,7 +3,8 @@ import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import {authCondition} from '../../UserAuthContext/authCondition';
 import {apiKey,MAX_DATE,dateChecker} from '../../Const/urlParts'
 import axios from 'axios';
-import Loader from '../../Loader'
+import Loader from '../../Loader';
+import Button from '../../Buttons/index'
 
 
 const ApodPage = () =>
@@ -78,7 +79,7 @@ class ApodForm extends Component {
 
 
                     <input min={MIN_DATE} max={MAX_DATE} type='date' value={date} onChange={event => this.setState(VIA_PROPS('date', event.target.value))} />
-                    <button className='button  button__search' type='button' onClick={() =>  this.fetchData(date) }>SEARCH</button>
+                    <Button text = 'Search' className='button  button__search' type='button' onClick={() =>  this.fetchData(date) }></Button>
 
 
                 </form>

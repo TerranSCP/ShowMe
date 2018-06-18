@@ -4,7 +4,8 @@ import { auth } from '../../../Firebase';
 import {SignUpLink} from '../SignUpPage';
 import {PasswordForgetLink} from '../PasswordForgetPage'
 import * as routes from '../../Const/const';
-import history from '../../History'
+import history from '../../History';
+import Button from '../../Buttons/index'
 
 
 
@@ -77,7 +78,7 @@ class SignInForm extends Component {
                 <form onSubmit={this.onSubmit}>
                     <input type='email' value={email} onChange={event => this.setState(VIA_PROPS('email', event.target.value))} placeholder='Your email' />
                     <input type='password' value={password} onChange={event => this.setState(VIA_PROPS('password', event.target.value))} placeholder='Your password' />
-                    <button value='Sign In' type='submit' disabled={isNotValid}>Sign In</button>
+                    <Button text = 'Sign In' value='Sign In' type='submit' disabled={isNotValid}></Button>
 
 
                     <div>
