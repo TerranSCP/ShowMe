@@ -3,10 +3,11 @@ import * as routes from '../../Const/const';
 import { Link } from 'react-router-dom';
 import { doPasswordReset } from '../../../Firebase/auth';
 import history from '../../History'
-
+import { StyledInput, StyledForm, StyledContainer, StyledText } from '../../../StyledComponents/index';
+import Button from '../../Buttons/index'
 
 const PasswordForgetPage = () =>
-    <div> Enter your email below
+    <div> <StyledText> We send new password to the following email.</StyledText>
         <PasswordForgetForm/>
     </div>
 
@@ -65,12 +66,12 @@ class PasswordForgetForm extends Component {
         const isNotValid = !email.match(/.{1,15}@.{1,10}/i);
 
         return (
-            <div>
+            <StyledContainer>
 
-                <form onSubmit={this.onSubmit}>
+                <StyledForm onSubmit={this.onSubmit}>
 
-                    <input type='email' value={email} onChange={event => this.setState(VIA_PROPS('email', event.target.value))} placeholder='Your email' />
-                    <button type='submit' disabled ={isNotValid}>Send new password</button>
+                    <StyledInput type='email' value={email} onChange={event => this.setState(VIA_PROPS('email', event.target.value))} placeholder='Your email' />
+                    <Button text = 'Send new password' type='submit' disabled ={isNotValid}></Button>
 
                     <div>
 
@@ -78,11 +79,11 @@ class PasswordForgetForm extends Component {
 
                     </div>
 
-                </form>
+                </StyledForm>
 
 
 
-            </div>
+            </StyledContainer>
         );
     }
 

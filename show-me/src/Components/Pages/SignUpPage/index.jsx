@@ -5,13 +5,17 @@ import { SignInLink } from '../SignInPage'
 import * as routes from '../../Const/const';
 import history from '../../History';
 import { database } from '../../../Firebase';
+import { StyledInput, StyledForm, StyledContainer, StyledText } from '../../../StyledComponents/index';
+import Button from '../../Buttons/index'
 
 
 
 const SignUpPage = () =>
-    <div> Sign Up
- <SignUpForm />
-        <SignInLink />
+    <div>
+        <StyledText> Sign Up </StyledText>
+        <SignUpForm />
+            <SignInLink />
+       
     </div>
 
 
@@ -59,15 +63,15 @@ class SignUpForm extends Component {
 
                     history.push(routes.HOME_PAGE);
 
-                      database.createDbUser(data.user.uid, username, email)
+                    database.createDbUser(data.user.uid, username, email)
 
-                            .then(() => {
-                                this.setState(() => ({ ...STATES }));   
-                                                                  
-                            })    
-                            .catch(error => this.setState(VIA_PROPS('error', error)))
+                        .then(() => {
+                            this.setState(() => ({ ...STATES }));
 
-                          
+                        })
+                        .catch(error => this.setState(VIA_PROPS('error', error)))
+
+
                 })
 
             .catch(error => this.setState(VIA_PROPS('error', error)))
@@ -89,15 +93,15 @@ class SignUpForm extends Component {
 
         return (
 
-            <div>
+            <StyledContainer>
 
-                <form onSubmit={this.onSubmit}>
+                <StyledForm onSubmit={this.onSubmit}>
 
-                    <input type='text' value={username} onChange={event => this.setState(VIA_PROPS('username', event.target.value))} placeholder='User Name' />
-                    <input type='email' value={email} onChange={event => this.setState(VIA_PROPS('email', event.target.value))} placeholder='Your email' />
-                    <input type='password' value={password} onChange={event => this.setState(VIA_PROPS('password', event.target.value))} placeholder='Your password' />
-                    <input type='password' value={confirmPassword} onChange={event => this.setState(VIA_PROPS('confirmPassword', event.target.value))} placeholder='Confirm password' />
-                    <button value='Sign In' type='submit' disabled={isNotValid}>Sign In</button>
+                    <StyledInput type='text' value={username} onChange={event => this.setState(VIA_PROPS('username', event.target.value))} placeholder='User Name' />
+                    <StyledInput type='email' value={email} onChange={event => this.setState(VIA_PROPS('email', event.target.value))} placeholder='Your email' />
+                    <StyledInput type='password' value={password} onChange={event => this.setState(VIA_PROPS('password', event.target.value))} placeholder='Your password' />
+                    <StyledInput type='password' value={confirmPassword} onChange={event => this.setState(VIA_PROPS('confirmPassword', event.target.value))} placeholder='Confirm password' />
+                    <Button text='Sign Up' value='Sign In' type='submit' disabled={isNotValid}></Button>
 
 
                     <div>
@@ -106,11 +110,11 @@ class SignUpForm extends Component {
 
                     </div>
 
-                </form>
+                </StyledForm>
 
 
 
-            </div>
+            </StyledContainer>
         );
     }
 
@@ -120,7 +124,7 @@ class SignUpForm extends Component {
 
 export const SignUpLink = () =>
     <div>
-        Dont have account? <br />
+        <StyledText> Dont have account? </StyledText>
         <Link to={routes.SIGN_UP_PAGE}>Sign UP!</Link>
     </div>
 

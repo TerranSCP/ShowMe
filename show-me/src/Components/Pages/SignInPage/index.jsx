@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
-import { withRouter , Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { auth } from '../../../Firebase';
-import {SignUpLink} from '../SignUpPage';
-import {PasswordForgetLink} from '../PasswordForgetPage'
+import { SignUpLink } from '../SignUpPage';
+import { PasswordForgetLink } from '../PasswordForgetPage'
 import * as routes from '../../Const/const';
 import history from '../../History';
-import Button from '../../Buttons/index'
+import Button from '../../Buttons/index';
+import { StyledInput, StyledForm, StyledContainer ,StyledText ,RotatedImg} from '../../../StyledComponents/index';
+import image from '../../App/images/satelite.png'
 
 
 
 const SignInPage = () =>
-    <div> Sign In Page
-    <SignInForm />
-    <SignUpLink/>
-    <PasswordForgetLink/>
+    <div style = {{position:'relative'}}>
+        <SignInForm />
+        <SignUpLink />
+        <PasswordForgetLink />
+        <RotatedImg  src = {image}></RotatedImg>
     </div>
 
 
@@ -49,13 +52,13 @@ class SignInForm extends Component {
 
         event.preventDefault();
 
-      
-        auth.doSignInUser(email, password)
-            .then(data => { 
 
-                this.setState(() => ({ ...STATES })) 
+        auth.doSignInUser(email, password)
+            .then(data => {
+
+                this.setState(() => ({ ...STATES }))
                 history.push(routes.HOME_PAGE);
-               
+
             })
             .catch(error => error)
     }
@@ -73,12 +76,14 @@ class SignInForm extends Component {
         const isNotValid = !email.match(/.{1,15}@.{1,10}/i) || password === '';
 
         return (
-            <div>
 
-                <form onSubmit={this.onSubmit}>
-                    <input type='email' value={email} onChange={event => this.setState(VIA_PROPS('email', event.target.value))} placeholder='Your email' />
-                    <input type='password' value={password} onChange={event => this.setState(VIA_PROPS('password', event.target.value))} placeholder='Your password' />
-                    <Button text = 'Sign In' value='Sign In' type='submit' disabled={isNotValid}></Button>
+            <StyledContainer>
+
+                <StyledForm onSubmit={this.onSubmit}>
+
+                    <StyledInput type='email' value={email} onChange={event => this.setState(VIA_PROPS('email', event.target.value))} placeholder='Your email' />
+                    <StyledInput type='password' value={password} onChange={event => this.setState(VIA_PROPS('password', event.target.value))} placeholder='Your password' />
+                    <Button text='Sign In' value='Sign In' type='submit' disabled={isNotValid}></Button>
 
 
                     <div>
@@ -87,11 +92,11 @@ class SignInForm extends Component {
 
                     </div>
 
-                </form>
+                </StyledForm>
 
 
 
-            </div>
+            </StyledContainer>
         );
     }
 
@@ -101,9 +106,9 @@ class SignInForm extends Component {
 
 
 export const SignInLink = () =>
-<div>
-    Already have account? <br/>
-    <Link to={routes.SIGN_IN_PAGE}>Sign In!</Link>
-</div>
+    <div>
+       <StyledText> Already have account?</StyledText> 
+        <Link to={routes.SIGN_IN_PAGE}>Sign In!</Link>
+    </div>
 
 export default withRouter(SignInPage);

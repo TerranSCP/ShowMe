@@ -1,39 +1,49 @@
 import React, { Component } from 'react';
-
 import AuthentificationChecker from '../UserAuthContext/AuthentificationChecker'
 import Routing from '../Routing';
-import {StyledHeader,StyledText} from '../../StyledComponents/index';
-import  {injectGlobal} from 'styled-components'
-
+import { injectGlobal } from 'styled-components';
 
 
 injectGlobal`
-    body{
-        margin:0;
-        padding: 0;
-        background-color: lightgray;
-        
-    }
-    .Nav--menu__link{
-      text-decoration: none;
-      color:rgb(1, 22, 19);
-      font-size: 1.4rem;
-    }
+body{
+  margin:0;
+  padding: 0;
+  background:linear-gradient(to top, rgb(141, 189, 185),rgb(109, 160, 163),rgb(107, 145, 146)) no-repeat;
+  text-align:center;
+  height:100vh;
+ 
+  
+}
+
+a{
+  text-decoration: none;
+  font-size: 1.2rem;
+  color:lightgray;
+  font-family: 'Arial Narrow Bold', sans-serif;
+  font-weight:bold;
+  &:hover{
+    color:lightcoral;
+  }
+
+  li>a{
+    font-weight:bold;
+  }
+}
+
+.Nav--menu__link{
+color:rgb(1, 22, 19);
+font-size: 1.4rem;
+}
 `
 
 
-class App extends Component {
 
-  render() {
 
-    return (
-      <div className="App">
-        <StyledHeader>Welcome to ShowMe app.</StyledHeader>
-        <StyledText>Know more about space programs and investigate amazing things!</StyledText>
-        <Routing />
-      </div>
-    );
-  }
-}
+const App = () =>
+
+  <div className="App">
+    <Routing />
+  </div>
+
 
 export default AuthentificationChecker(App);

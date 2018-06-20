@@ -3,6 +3,8 @@ import {observeOnAuthStateChanged} from '../../Firebase/auth'
 import UserContext from './UserContext'
 
 
+
+
 const AuthentificationChecker = (Component) => {
 
     class AuthentificationChecker extends React.Component{
@@ -27,6 +29,7 @@ const AuthentificationChecker = (Component) => {
         render(){
 
             const {loggedUser} = this.state;
+           
 
             return (
 

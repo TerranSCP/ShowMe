@@ -1,23 +1,24 @@
 
-import styled  from 'styled-components';
+import styled, { keyframes }  from 'styled-components';
 
-import img from '../Components/App/images/body-bg.jpg' ; 
 
 
 
 export const StyledButton = styled.button`
 
-min-width:80px;
-height:30px;
-background-color:rgb(156, 187, 185);
+min-width:5rem;
+height:1.5rempx;
+background-color:rgb(98, 126, 116);
 border:1px solid rgb(36, 182, 162);
 border-radius:5px ;
 font-size: 1rem;
-font-family:'sans-serif';
+font-family:  'Arial Narrow Bold', sans-serif;
+color:#ffffff;
+margin-top:10px;
 
 &:hover{
- border:1px solid rgb(255, 0, 55);
- background:linear-gradient(rgb(156, 187, 185),rgb(94, 160, 156));
+ border:1px solid rgb(38, 185, 165);
+ background:linear-gradient(rgb(100, 128, 120),rgb(102, 135,130));
 }
 
 `;
@@ -33,7 +34,7 @@ export const StyledHeader = styled.h1`
 export const StyledText = styled.p`
     font-size:1.4rem;
     color:#fff;
-    font-family:'Open Sans';
+    font-family: 'Arial Narrow Bold', sans-serif;;
 `
 
 
@@ -42,22 +43,67 @@ export const StyledUl = styled.ul`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    margin:  50px 0px;
+
+    @media(max-width:768px){
+        flex-direction:column;
+    }
 `;
 
 
 export const StyledLi = styled.li`
     margin-left:15px;
-    border: 2px solid goldenrod;
     display: block;
 
-    &:hover{
-        background-color:rgb(112, 28, 28);
-      }
+    @media(max-width:768px){
+       margin-bottom:10px;
+    }
 `;
 
 
+export const StyledInput = styled.input`
+      min-width:35%;
+      height:1.5rem;
+      border:1px solid purple;
+      border-radius:5px;
+      font-family: 'Arial Narrow Bold', sans-serif;;
+      font-size:1.2rem;
+      margin-right:10px;
+      margin-top:10px;
+`
 
+export const StyledForm = styled.form`
+      display:flex;
+      width:40%;
+      margin-top:10px;
 
+      @media (max-width:768px){
+          flex-direction:column;
+          justify-content:space-around;
+      }
+`
+export const StyledContainer = styled.div`
+      display:flex;
+      justify-content:center;
+ 
+`
 
+const rotate = keyframes`
+      from {
+          transform:rotate(0deg);
+          left:0%;
+      }
+      to {
+          transform:rotate(360deg);
+          left:70%;
+      }
+`
 
-
+export const RotatedImg = styled.img`
+      width:25%;
+      left:40%;
+      top:230%;
+      animation: ${rotate} 8s linear infinite alternate;
+      position:absolute;
+     
+`
