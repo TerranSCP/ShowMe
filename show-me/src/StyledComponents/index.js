@@ -6,8 +6,8 @@ import styled, { keyframes }  from 'styled-components';
 
 export const StyledButton = styled.button`
 
-min-width:5rem;
-height:1.5rempx;
+min-width:100px;
+height:1.5rem;
 background-color:rgb(98, 126, 116);
 border:1px solid rgb(36, 182, 162);
 border-radius:5px ;
@@ -22,6 +22,23 @@ margin-top:10px;
 }
 
 `;
+
+export const RemoveButton = styled.button`
+    color:#000;
+    width:20px;
+    height:20px;
+    background:none;
+    border:2px solid #000;
+    position:absolute;
+    left:0;
+    top:0;
+    border-left:none;
+    border-top:none;
+
+    &:hover{
+        background-color:rgb(150, 189, 185);
+    }
+`
 
 
 export const StyledHeader = styled.h1`
@@ -44,6 +61,7 @@ export const StyledUl = styled.ul`
     flex-direction: row;
     flex-wrap: nowrap;
     margin:  50px 0px;
+    padding:0;
 
     @media(max-width:768px){
         flex-direction:column;
@@ -85,6 +103,8 @@ export const StyledForm = styled.form`
 export const StyledContainer = styled.div`
       display:flex;
       justify-content:center;
+      flex-wrap:wrap;
+      flex-direction:row;
  
 `
 
@@ -106,4 +126,36 @@ export const RotatedImg = styled.img`
       animation: ${rotate} 8s linear infinite alternate;
       position:absolute;
      
+`
+
+export const ResponsiveImage = styled.img`
+      width:100%;
+      height:300px;
+
+      @media(max-width:768px){
+          height:200px;
+      }
+
+      @media(max-width:450px){
+        height:100px;
+    }
+`
+
+export const StyledTextHover = StyledText.extend`
+      &:hover{
+          color:lightcoral;
+      }
+`
+
+export const StyledResponsiveBlock = styled.div`
+    width: 25%;
+    display: flex;
+    margin-bottom: 15px;
+    margin-left: 15px; 
+    flex-direction: column;
+    border: 2px solid #000;
+`
+
+export const ResponsiveText = styled.span`
+      font-size:1rem;
 `

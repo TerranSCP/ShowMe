@@ -4,12 +4,13 @@ import {authCondition} from '../../UserAuthContext/authCondition';
 import SpaceXTable from './SpaceXTable'
 import Button from '../../Buttons';
 import axios from 'axios';
-import ByYears from '../../Filters/ByYears'
-import Loader from '../../Loader'
+import ByYears from '../../Filters/ByYears';
+import Loader from '../../Loader';
+import {StyledForm,StyledContainer,StyledText} from '../../../StyledComponents/index';
 
 
 const SpaceXPage = () =>
-<div> SpaceX latest launches information !
+<div>  <StyledText>SpaceX latest launches information ! </StyledText>
     <SpaceXLaunches/>
 </div>
 
@@ -64,19 +65,19 @@ class SpaceXLaunches extends Component {
        return (
 
 
-            <div className='SpaceX__wrapper'  >
+            <StyledContainer className='SpaceX__wrapper'  >
 
 
 
 
-                <form style={{ marginBottom: '100px' }} >
+                <StyledForm style={{ marginBottom: '100px' }} >
 
 
                    
                     <Button className='button  button__load' type='button' onClick={() => this.fetchData()} text = 'Load'></Button>
 
 
-                </form>
+                </StyledForm>
 
 
 
@@ -88,7 +89,7 @@ class SpaceXLaunches extends Component {
 
 
 
-            </div>
+            </StyledContainer>
 
         );
     }

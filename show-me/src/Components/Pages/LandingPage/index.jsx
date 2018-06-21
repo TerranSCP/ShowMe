@@ -2,9 +2,10 @@ import React  from 'react';
 import {StyledHeader,StyledText} from '../../../StyledComponents/index';
 import {RotatedImg} from '../../../StyledComponents/index';
 import image from '../../App/images/satelite.png'
+import img from '../../App/images/body-bg.jpg'
 
 const LandingPage =  ()  =>  
-    <div style = {{position:'relative'}}>
+    <div style = {{position:'relative' }}>
 
     <StyledHeader>Welcome to ShowMe app.</StyledHeader>
     <StyledText>Know more about space programs and investigate amazing things!</StyledText>

@@ -6,11 +6,13 @@ import axios from 'axios';
 import Button from '../../Buttons'
 import MarsTable from './MarsTable';
 import Loader from '../../Loader';
-
+import {StyledContainer,StyledForm,StyledText, StyledTextHover} from '../../../StyledComponents/index';
+import img from '../../App/images/body-bg.jpg' ;
+ 
 
 
 const MarsPhotosLibrary = () =>
-    <div> Photos from mars rover droid
+    <div> 
    <MarsLibrary />
     </div>
 
@@ -89,7 +91,7 @@ class MarsLibrary extends Component {
         const { resp, page, searchTerm, loading } = this.state;
 
         const isInvalid = page <= 1;
-        const currentCam = `Current CAM : ${searchTerm}`
+        const currentCam = <StyledText> Current CAM : {searchTerm}</StyledText> ;
 
 
         return (
@@ -97,28 +99,29 @@ class MarsLibrary extends Component {
 
             <div className='Mars--library__wrapper'  >
 
+               
+
+                <StyledContainer style = {{backgroundImage:`url(${img})` , minHeight:'25rem'}} className='Mars--form__wrapper'>
+                <StyledText> Photos from mars rover droid </StyledText>
+                    <StyledForm style={{ marginBottom: '100px' }} >
 
 
-                <div className='Mars--form__wrapper'>
 
-                    <form style={{ marginBottom: '100px' }} >
+                        <label>  <StyledTextHover>FRONTAL CAMERA </StyledTextHover>   <input style = {{display:'none'}}  type='checkbox' value='fhaz' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
+                        <label> <StyledTextHover> REAR CAMERA </StyledTextHover>  <input style = {{display:'none'}} type='checkbox' value='rhaz' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
+                        <label> <StyledTextHover>MAST CAMERA </StyledTextHover>  <input style = {{display:'none'}} type='checkbox' value='mast' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
+                        <label> <StyledTextHover>PANORAMIC CAMERA</StyledTextHover> <input style = {{display:'none'}} type='checkbox' value='pancam' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
 
-
-
-                        <label> FRONTAL CAMERA   <input type='checkbox' value='fhaz' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
-                        <label> REAR CAMERA  <input type='checkbox' value='rhaz' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
-                        <label> MAST CAMERA  <input type='checkbox' value='mast' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
-                        <label> PANORAMIC CAMERA <input type='checkbox' value='pancam' onChange={event => {this.setState(VIA_PROPS('searchTerm', event.target.value)) ; event.target.checked = false }} /> </label>
-
-                        <button className='button  button__search' type='button' onClick={() => { this.setState({ page: 1 }); setTimeout(() => { this.fetchData(searchTerm, page) }, 500) }}>SEARCH</button>
+                        <Button text = 'Search' className='button  button__search' type='button' onClick={() => { this.setState({ page: 1 }); setTimeout(() => { this.fetchData(searchTerm, page) }, 500) }}></Button>
 
 
-                    </form>
-                </div>
+                    </StyledForm>
+                  
+                </StyledContainer>
 
 
-                <Button text='prev' type='button' className='button  button__prev' disabled={isInvalid} onClick={() => this.prevPage(searchTerm)} />
-                <Button text='next' type='button' className='button  button__next' onClick={() => this.nextPage(searchTerm)} />
+                <Button text='Prev' type='button' className='button  button__prev' disabled={isInvalid} onClick={() => this.prevPage(searchTerm)} />
+                <Button text='Next' type='button' className='button  button__next' onClick={() => this.nextPage(searchTerm)} />
 
                 {loading? <Loader/> : null}
                 {currentCam ? currentCam : null}

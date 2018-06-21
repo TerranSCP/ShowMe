@@ -4,15 +4,14 @@ import Routing from '../Routing';
 import { injectGlobal } from 'styled-components';
 
 
+
 injectGlobal`
 body{
   margin:0;
   padding: 0;
-  background:linear-gradient(to top, rgb(141, 189, 185),rgb(109, 160, 163),rgb(107, 145, 146)) no-repeat;
+  background:linear-gradient( rgb(141, 189, 185),rgb(109, 160, 163),rgb(107, 145, 146)) no-repeat;
   text-align:center;
-  height:100vh;
  
-  
 }
 
 a{
@@ -25,9 +24,7 @@ a{
     color:lightcoral;
   }
 
-  li>a{
-    font-weight:bold;
-  }
+
 }
 
 .Nav--menu__link{
@@ -41,7 +38,7 @@ font-size: 1.4rem;
 
 const App = () =>
 
-  <div className="App">
+  <div  className="App">
     <Routing />
   </div>
 

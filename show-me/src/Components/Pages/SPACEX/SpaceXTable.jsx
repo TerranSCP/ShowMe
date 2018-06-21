@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {ResponsiveImage,StyledResponsiveBlock,StyledContainer,ResponsiveText} from '../../../StyledComponents/index';
 
 
 const SpaceXTable = ({ resp }) => {
@@ -8,30 +8,35 @@ const SpaceXTable = ({ resp }) => {
   
     return (
 
-      <div className='spaceX--table' style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <StyledContainer className='spaceX--table' >
   
         {
   
           resp.map(item => {
             return (
-              <div key={`response--block__${counter++}`} style={{ width: '25%', height: 'auto', display: 'flex', marginBottom: '15px', marginLeft: '15px', flexDirection: 'column', border: '2px solid #000' }}>
+
+              <StyledResponsiveBlock key={`response--block__${counter++}`} style={{justifyContent:'space-between'}}>
                
                 <h2>{item.mission_name}</h2>
-                <span>{item.launch_year}</span>
-                <span>{`Launch success : ${item.launch_success}`}</span>
-                <span>{item.details}</span>
+                <ResponsiveText>{item.launch_year}</ResponsiveText>
+                <ResponsiveText>{`Launch success : ${item.launch_success}`}</ResponsiveText>
+                <ResponsiveText>{item.details}</ResponsiveText>
                     
-                <img  style={{ width: '100%', height: '300px' }} alt='mission patch been here' key={item.flight_number} src={item.links.mission_patch} />
-                <span style={{ width: '100%' }}><a href = {item.links.video_link}>YOUTUBE</a></span>
-                <span ><a href = {item.links.wikipedia}>Wiki Link</a></span>
+                <ResponsiveImage  alt='mission patch been here' key={item.flight_number} src={item.links.mission_patch} />
+
+              <div style = {{display:'flex',flexDirection:'column'}} >
+                <a  href = {item.links.video_link}>YOUTUBE</a>
+                <a  href = {item.links.wikipedia}>Wiki Link</a>
               </div>
+
+              </StyledResponsiveBlock>
             );
           })
         }
   
   
   
-      </div>
+      </StyledContainer>
     )
   }
   

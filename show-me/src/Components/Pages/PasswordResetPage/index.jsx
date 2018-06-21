@@ -5,10 +5,12 @@ import { doPasswordUpdate } from '../../../Firebase/auth';
 import history from '../../History';
 import AuthorisationChecker from '../../UserAuthContext/AuthorisationChecker';
 import {authCondition} from '../../UserAuthContext/authCondition';
+import {StyledContainer,StyledForm,StyledInput,StyledText} from '../../../StyledComponents/index';
+import Button from '../../Buttons/index';
 
 
 const PasswordResetPage = () =>
-<div> Enter new password below
+<div>  <StyledText>Enter new password below</StyledText>
     <PasswordResetForm/>
 </div>
 
@@ -68,13 +70,13 @@ class PasswordResetForm extends Component {
         const isNotValid = password === '' || confirmPassword === '' || confirmPassword !== password;
 
         return (
-            <div>
+            <StyledContainer>
 
-                <form onSubmit={this.onSubmit}>
+                <StyledForm onSubmit={this.onSubmit}>
 
-                    <input type='password' value={password} onChange={event => this.setState(VIA_PROPS('password', event.target.value))} placeholder='New password' />
-                    <input type='password' value={confirmPassword} onChange={event => this.setState(VIA_PROPS('confirmPassword', event.target.value))} placeholder='Confirm password' />
-                    <button type='submit' disabled ={isNotValid}>Change password</button>
+                    <StyledInput type='password' value={password} onChange={event => this.setState(VIA_PROPS('password', event.target.value))} placeholder='New password' />
+                    <StyledInput type='password' value={confirmPassword} onChange={event => this.setState(VIA_PROPS('confirmPassword', event.target.value))} placeholder='Confirm password' />
+                    <Button text = 'Change password' type='submit' disabled ={isNotValid}></Button>
 
                     <div>
 
@@ -82,11 +84,11 @@ class PasswordResetForm extends Component {
 
                     </div>
 
-                </form>
+                </StyledForm>
 
 
 
-            </div>
+            </StyledContainer>
         );
     }
 

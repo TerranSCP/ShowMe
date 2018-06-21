@@ -1,8 +1,8 @@
 import React , {Component} from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../Const/const';
-import UserContext from '../UserAuthContext/UserContext'
-import {StyledUl,StyledLi,StyledContainer} from '../../StyledComponents/index'
+import UserContext from '../UserAuthContext/UserContext';
+import {StyledUl,StyledLi,StyledContainer} from '../../StyledComponents/index';
 
 
 
@@ -19,7 +19,7 @@ const NavMenu = ({ loggedUser }) =>
 
 const NavMenuIsLogged = () =>
 
-<StyledContainer>
+<StyledContainer style = {{background:`linear-gradient( rgb(141, 189, 185),rgb(109, 160, 163),rgb(107, 145, 146)) no-repeat`,minHeight:'10rem'}}>
 
     <StyledUl className = 'Nav--Menu'>
     
@@ -37,11 +37,13 @@ const NavMenuIsLogged = () =>
 
 const NavMenuIsNotLogged = () =>
 
-<StyledContainer>
+<StyledContainer style = {{background:`linear-gradient( rgb(141, 189, 185),rgb(109, 160, 163),rgb(107, 145, 146)) no-repeat`,minHeight:'10rem'}}>
+
     <StyledUl className = 'Nav--Menu'>
         <StyledLi><Link className = 'Nav--menu__link' to={routes.LANDING_PAGE}>LANDING</Link></StyledLi>
         <StyledLi><Link className = 'Nav--menu__link' to={routes.SIGN_IN_PAGE}>SIGN IN</Link></StyledLi>
     </StyledUl>
+
 </StyledContainer>
 
 export default NavMenu;

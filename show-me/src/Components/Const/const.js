@@ -1,5 +1,5 @@
 export const HOME_PAGE = '/home';
-export const LANDING_PAGE = '/landing';
+export const LANDING_PAGE = '/';
 export const ACCOUNT_PAGE = '/account';
 export const SIGN_IN_PAGE = '/sign-in';
 export const SIGN_UP_PAGE = '/sign-up';

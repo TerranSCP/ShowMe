@@ -4,11 +4,12 @@ import {authCondition} from '../../UserAuthContext/authCondition';
 import {apiKey,MAX_DATE,dateChecker} from '../../Const/urlParts'
 import axios from 'axios';
 import Loader from '../../Loader';
-import Button from '../../Buttons/index'
+import Button from '../../Buttons/index';
+import {StyledInput,StyledText,StyledContainer, StyledResponsiveBlock, ResponsiveImage, ResponsiveText} from '../../../StyledComponents/index'
 
 
 const ApodPage = () =>
-<div> See the wonderful astromomy picture of the day!
+<div>  <StyledText>See the wonderful astromomy picture of the day!</StyledText>
      <ApodForm/></div>
 
 const VIA_PROPS = (propname, value) => {
@@ -70,7 +71,7 @@ class ApodForm extends Component {
         return (
 
 
-            <div className='Apod__wrapper' style = {{display:'flex',flexDirection:'column',alignItems:'center'}}  >
+            <StyledContainer className='Apod__wrapper'  >
 
 
 
@@ -78,7 +79,7 @@ class ApodForm extends Component {
                 <form style={{ marginBottom: '100px' }} >
 
 
-                    <input min={MIN_DATE} max={MAX_DATE} type='date' value={date} onChange={event => this.setState(VIA_PROPS('date', event.target.value))} />
+                    <StyledInput min={MIN_DATE} max={MAX_DATE} type='date' value={date} onChange={event => this.setState(VIA_PROPS('date', event.target.value))} />
                     <Button text = 'Search' className='button  button__search' type='button' onClick={() =>  this.fetchData(date) }></Button>
 
 
@@ -88,16 +89,16 @@ class ApodForm extends Component {
 
               {resp ? 
 
-                <div className = 'Apod--picture__wrapper' style = {{display:'flex',flexDirection:'column',alignItems:'center',border:'1px solid black',width:'720px'}}>
+                <div className = 'Apod--picture__wrapper' style = {{display:'flex',flexDirection:'column',alignItems:'center'}}>
                     <span>{resp.title}</span>
-                    <img style = {{width:'700px',height:'500px'}} alt='p' src = {resp.url}/>
-                    <div>{resp.explanation}</div>
-                    <span>{resp.copyright}</span>
+                    <img style = {{maxWidth:'80%'}} alt='p' src = {resp.url}/>
+                    <ResponsiveText style = {{maxWidth:'60%'}}>{resp.explanation}</ResponsiveText>
+                    <ResponsiveText>{resp.copyright}</ResponsiveText>
                 </div>
               
               : null}
 
-            </div>
+            </StyledContainer>
 
         );
     }

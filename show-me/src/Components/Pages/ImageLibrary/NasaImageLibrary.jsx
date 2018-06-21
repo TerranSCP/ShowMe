@@ -6,10 +6,12 @@ import Button from '../../Buttons'
 import ImageTable from './ImageTable';
 import Loader from '../../Loader'
 
+import {StyledContainer,StyledForm,StyledInput,StyledText} from '../../../StyledComponents/index'
+
 
 
 const NasaImageLibrary = () =>
-    <div> Nasa Image Library
+    <div>  <StyledText> Nasa Image Library </StyledText>
    <ImageLibrary />
     </div>
 
@@ -93,19 +95,19 @@ class ImageLibrary extends Component {
         return (
 
 
-            <div className='Library__wrapper'  >
+            <StyledContainer className='Library__wrapper'  >
 
 
 
 
-                <form style={{ marginBottom: '100px' }} >
+                <StyledForm style={{ marginBottom: '100px' }} >
 
 
-                    <input type='text' value={searchTerm} onChange={event => this.setState(VIA_PROPS('searchTerm', event.target.value))} />
+                    <StyledInput type='text' value={searchTerm} onChange={event => this.setState(VIA_PROPS('searchTerm', event.target.value))} />
                     <Button className='button  button__search' type='button' text = 'Search' onClick={() => {this.setState({page:1}) ; setTimeout( () =>{ this.fetchData(searchTerm, page)},500)}}></Button>
 
 
-                </form>
+                </StyledForm>
 
                 <Button text='prev' type='button' className='button  button__prev' disabled={isInvalid} onClick={() => this.prevPage(searchTerm)} />
                 <Button text='next' type='button' className='button  button__next' disabled={isInvalid} onClick={() => this.nextPage(searchTerm)} />
@@ -119,7 +121,7 @@ class ImageLibrary extends Component {
               
 
 
-            </div>
+            </StyledContainer>
 
         ) ;
     }
