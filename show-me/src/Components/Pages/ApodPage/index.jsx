@@ -5,7 +5,7 @@ import {apiKey,MAX_DATE,dateChecker} from '../../Const/urlParts'
 import axios from 'axios';
 import Loader from '../../Loader';
 import Button from '../../Buttons/index';
-import {StyledInput,StyledText,StyledContainer, StyledResponsiveBlock, ResponsiveImage, ResponsiveText} from '../../../StyledComponents/index'
+import {StyledInput,StyledText,StyledContainer,ResponsiveText} from '../../../StyledComponents/index'
 
 
 const ApodPage = () =>
@@ -90,7 +90,7 @@ class ApodForm extends Component {
               {resp ? 
 
                 <div className = 'Apod--picture__wrapper' style = {{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                    <span>{resp.title}</span>
+                    <StyledText>{resp.title}</StyledText>
                     <img style = {{maxWidth:'80%'}} alt='p' src = {resp.url}/>
                     <ResponsiveText style = {{maxWidth:'60%'}}>{resp.explanation}</ResponsiveText>
                     <ResponsiveText>{resp.copyright}</ResponsiveText>

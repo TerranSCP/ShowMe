@@ -25,7 +25,7 @@ class AccountPage extends Component {
         <UserContext.Consumer>
 
           {loggedUser => loggedUser
-            ? <div>
+            ? <div style = {{transform:'translateY(6rem)'}}>
               <PassworResetLink />
               <Button className='Log--out__button' type='button' text='Log Out' onClick={doSignOutUser} />
 

@@ -65,7 +65,7 @@ class SpaceXLaunches extends Component {
        return (
 
 
-            <StyledContainer className='SpaceX__wrapper'  >
+            <StyledContainer style = {{ background:'gray', minHeight:'15rem'}} className='SpaceX__wrapper'  >
 
 
 

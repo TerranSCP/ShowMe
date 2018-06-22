@@ -2,7 +2,7 @@ import React  from 'react';
 import {StyledHeader,StyledText} from '../../../StyledComponents/index';
 import {RotatedImg} from '../../../StyledComponents/index';
 import image from '../../App/images/satelite.png'
-import img from '../../App/images/body-bg.jpg'
+
 
 const LandingPage =  ()  =>  
     <div style = {{position:'relative' }}>

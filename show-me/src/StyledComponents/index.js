@@ -6,8 +6,9 @@ import styled, { keyframes }  from 'styled-components';
 
 export const StyledButton = styled.button`
 
+
 min-width:100px;
-height:1.5rem;
+max-height:2rem;
 background-color:rgb(98, 126, 116);
 border:1px solid rgb(36, 182, 162);
 border-radius:5px ;
@@ -122,7 +123,7 @@ const rotate = keyframes`
 export const RotatedImg = styled.img`
       width:25%;
       left:40%;
-      top:230%;
+      top:150%;
       animation: ${rotate} 8s linear infinite alternate;
       position:absolute;
      

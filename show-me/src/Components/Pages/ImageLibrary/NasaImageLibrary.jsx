@@ -95,7 +95,7 @@ class ImageLibrary extends Component {
         return (
 
 
-            <StyledContainer className='Library__wrapper'  >
+            <StyledContainer style = {{ background:'gray', minHeight:'15rem'}} className='Library__wrapper'  >
 
 
 

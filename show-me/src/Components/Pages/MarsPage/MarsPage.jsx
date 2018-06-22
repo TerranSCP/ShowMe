@@ -7,7 +7,7 @@ import Button from '../../Buttons'
 import MarsTable from './MarsTable';
 import Loader from '../../Loader';
 import {StyledContainer,StyledForm,StyledText, StyledTextHover} from '../../../StyledComponents/index';
-import img from '../../App/images/body-bg.jpg' ;
+
  
 
 
@@ -91,7 +91,7 @@ class MarsLibrary extends Component {
         const { resp, page, searchTerm, loading } = this.state;
 
         const isInvalid = page <= 1;
-        const currentCam = <StyledText> Current CAM : {searchTerm}</StyledText> ;
+        const currentCam = <StyledText > Current CAM : {searchTerm}</StyledText> ;
 
 
         return (
@@ -101,9 +101,10 @@ class MarsLibrary extends Component {
 
                
 
-                <StyledContainer style = {{backgroundImage:`url(${img})` , minHeight:'25rem'}} className='Mars--form__wrapper'>
-                <StyledText> Photos from mars rover droid </StyledText>
-                    <StyledForm style={{ marginBottom: '100px' }} >
+                <StyledContainer style = {{ background:'gray', minHeight:'15rem'}} className='Mars--form__wrapper'>
+
+                <StyledText> Photos from mars rover droid (choose cam) : </StyledText>
+                    <StyledForm  >
 
 
 
@@ -117,14 +118,21 @@ class MarsLibrary extends Component {
 
                     </StyledForm>
                   
-                </StyledContainer>
+                </StyledContainer >
 
+                {loading? <Loader/> : null}
+                {currentCam ? currentCam : null}
+                
+            <StyledContainer style = {{marginBottom:'50px'}}>
 
                 <Button text='Prev' type='button' className='button  button__prev' disabled={isInvalid} onClick={() => this.prevPage(searchTerm)} />
                 <Button text='Next' type='button' className='button  button__next' onClick={() => this.nextPage(searchTerm)} />
 
-                {loading? <Loader/> : null}
-                {currentCam ? currentCam : null}
+               
+            
+
+            </StyledContainer>
+
                 {resp ? <MarsTable resp={resp} remove={this.remove} style={{ width: '80%' }} /> : null}
 
 

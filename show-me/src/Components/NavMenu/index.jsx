@@ -1,8 +1,9 @@
-import React , {Component} from 'react';
+import React  from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../Const/const';
 import UserContext from '../UserAuthContext/UserContext';
 import {StyledUl,StyledLi,StyledContainer} from '../../StyledComponents/index';
+import img from '../App/images/body-bg.jpg' ;
 
 
 
@@ -19,7 +20,7 @@ const NavMenu = ({ loggedUser }) =>
 
 const NavMenuIsLogged = () =>
 
-<StyledContainer style = {{background:`linear-gradient( rgb(141, 189, 185),rgb(109, 160, 163),rgb(107, 145, 146)) no-repeat`,minHeight:'10rem'}}>
+<StyledContainer style = {{backgroundImage:`url(${img})`,minHeight:'20rem'}}>
 
     <StyledUl className = 'Nav--Menu'>
     
@@ -37,7 +38,7 @@ const NavMenuIsLogged = () =>
 
 const NavMenuIsNotLogged = () =>
 
-<StyledContainer style = {{background:`linear-gradient( rgb(141, 189, 185),rgb(109, 160, 163),rgb(107, 145, 146)) no-repeat`,minHeight:'10rem'}}>
+<StyledContainer style = {{backgroundImage:`url(${img})`,minHeight:'20rem'}}>
 
     <StyledUl className = 'Nav--Menu'>
         <StyledLi><Link className = 'Nav--menu__link' to={routes.LANDING_PAGE}>LANDING</Link></StyledLi>

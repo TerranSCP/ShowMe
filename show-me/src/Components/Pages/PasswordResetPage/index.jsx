@@ -70,7 +70,8 @@ class PasswordResetForm extends Component {
         const isNotValid = password === '' || confirmPassword === '' || confirmPassword !== password;
 
         return (
-            <StyledContainer>
+
+            <StyledContainer style = {{ background:'gray', minHeight:'15rem'}}>
 
                 <StyledForm onSubmit={this.onSubmit}>
 

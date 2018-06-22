@@ -66,7 +66,7 @@ class PasswordForgetForm extends Component {
         const isNotValid = !email.match(/.{1,15}@.{1,10}/i);
 
         return (
-            <StyledContainer>
+            <StyledContainer style = {{ background:'gray', minHeight:'15rem'}}>
 
                 <StyledForm onSubmit={this.onSubmit}>
 

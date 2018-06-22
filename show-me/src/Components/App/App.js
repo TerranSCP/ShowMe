@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AuthentificationChecker from '../UserAuthContext/AuthentificationChecker'
 import Routing from '../Routing';
 import { injectGlobal } from 'styled-components';
 
-
-
 injectGlobal`
+
 body{
   margin:0;
   padding: 0;
-  background:linear-gradient( rgb(141, 189, 185),rgb(109, 160, 163),rgb(107, 145, 146)) no-repeat;
+  background:gray;
   text-align:center;
  
 }
@@ -28,7 +27,7 @@ a{
 }
 
 .Nav--menu__link{
-color:rgb(1, 22, 19);
+color:rgb(60, 60, 60);
 font-size: 1.4rem;
 }
 `
